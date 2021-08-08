@@ -5,6 +5,6 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty
 
 @JsonRootName("dic_number")
 data class DictionaryNumber(
-    @JacksonXmlProperty(localName = "cp_value")
+    @JacksonXmlProperty(localName = "dic_ref")
     var values: List<DictionaryReference>?
 )

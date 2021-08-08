@@ -5,6 +5,6 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty
 
 @JsonRootName("query_code")
 data class QueryCode(
-    @JacksonXmlProperty(localName = "rad_value")
-    var value: List<RadicalValue>?,
+    @JacksonXmlProperty(localName = "q_code")
+    var info: List<QueryCodeInfo>?,
 )

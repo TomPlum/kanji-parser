@@ -8,7 +8,8 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlText
 data class QueryCodeInfo(
     @JacksonXmlProperty(isAttribute = true, localName = "qc_type")
     var type: String?,
-
+) {
     @JacksonXmlText
-    var value: String?
-)
+    lateinit var value: String private set
+}
+

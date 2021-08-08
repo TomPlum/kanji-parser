@@ -9,5 +9,5 @@ data class KanjiDictionary(
     var header: Header? = null,
 
     @JacksonXmlProperty(localName = "character")
-    var character: Character? = null
+    var characters: List<Character>? = null
 )
