@@ -6,8 +6,8 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty
 @JsonRootName("rmgroup")
 data class ReadingMeaningGroup(
     @JacksonXmlProperty(localName = "reading")
-    var readings: List<Reading>?,
+    var readings: List<Reading> = emptyList(),
 
     @JacksonXmlProperty(localName = "meaning")
-    var meanings: List<String>?,
+    var meanings: List<Meaning> = emptyList(),
 )

@@ -6,7 +6,7 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlText
 
 @JsonRootName("meaning")
 data class Meaning(
-    @JacksonXmlProperty(localName = "m_lang")
+    @JacksonXmlProperty(isAttribute = true, localName = "m_lang")
     var language: String = "en",
 ) {
     @JacksonXmlText
