@@ -1,12 +1,12 @@
-package io.github.tomplum.kanji.model
+package io.github.tomplum.kanji.model.xml.character.radical
 
 import com.fasterxml.jackson.annotation.JsonRootName
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlText
 
-@JsonRootName("reading")
-data class Reading(
-    @JacksonXmlProperty(isAttribute = true, localName = "r_type")
+@JsonRootName("rad_value")
+data class RadicalValue(
+    @JacksonXmlProperty(isAttribute = true, localName = "rad_type")
     var type: String?,
 ) {
     @JacksonXmlText

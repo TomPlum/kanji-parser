@@ -1,7 +1,7 @@
 package io.github.tomplum
 
 import io.github.tomplum.kanji.KanjiParser
-import io.github.tomplum.kanji.model.Character
+import io.github.tomplum.kanji.model.xml.Character
 
 fun main() {
     val parser = KanjiParser()

@@ -8,7 +8,7 @@ import com.fasterxml.jackson.dataformat.xml.JacksonXmlModule
 import com.fasterxml.jackson.dataformat.xml.XmlMapper
 import com.fasterxml.jackson.module.kotlin.readValue
 import com.fasterxml.jackson.module.kotlin.registerKotlinModule
-import io.github.tomplum.kanji.model.KanjiDictionary
+import io.github.tomplum.kanji.model.xml.KanjiDictionary
 import java.io.FileNotFoundException
 
 class KanjiParser {

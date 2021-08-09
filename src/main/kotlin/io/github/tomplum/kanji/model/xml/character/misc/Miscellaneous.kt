@@ -1,6 +1,7 @@
+package io.github.tomplum.kanji.model.xml.character.misc
+
 import com.fasterxml.jackson.annotation.JsonRootName
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty
-import io.github.tomplum.kanji.model.Variant
 
 @JsonRootName("misc")
 data class Miscellaneous(

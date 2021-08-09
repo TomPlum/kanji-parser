@@ -1,7 +1,8 @@
-package io.github.tomplum.kanji.model
+package io.github.tomplum.kanji.model.xml
 
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement
+import io.github.tomplum.kanji.model.xml.header.Header
 
 @JacksonXmlRootElement(localName = "kanjidic2")
 class KanjiDictionary {
@@ -11,7 +12,7 @@ class KanjiDictionary {
     private val foundCharacters = mutableListOf<Character>()
 
     /**
-     * Is necessary to do it this way as Jackson gets confused and overwrites
+     * It is necessary to do it this way as Jackson gets confused and overwrites
      * some elements and ~50% were being lost.
      * See: https://github.com/FasterXML/jackson-dataformat-xml/issues/363
      */
