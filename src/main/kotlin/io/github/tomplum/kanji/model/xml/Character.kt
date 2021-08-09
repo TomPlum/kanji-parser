@@ -12,7 +12,7 @@ import io.github.tomplum.kanji.model.xml.character.reading.ReadingMeaning
 @JsonRootName("character")
 data class Character(
     @JacksonXmlProperty(localName = "literal")
-    var literal: String?,
+    var literal: String,
 
     @JacksonXmlProperty(localName = "codepoint")
     var codepoint: CodePoint?,
