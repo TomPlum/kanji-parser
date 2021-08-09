@@ -27,7 +27,7 @@ allprojects {
     }
 
     dependencies {
-        implementation(kotlin("stdlib-jdk8"))
+        implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.5.21")
     }
 
     tasks.withType<KotlinCompile> {
@@ -36,6 +36,14 @@ allprojects {
 }
 
 dependencies {
-    implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.11.2")
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.11.2")
+    //Jackson
+    implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.12.4")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.12.4")
+
+    //Test
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.7.2")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.7.2")
+    testImplementation("org.junit.jupiter:junit-jupiter-params:5.7.2")
+    testImplementation("org.junit.platform:junit-platform-launcher:1.7.2")
+    testImplementation("com.willowtreeapps.assertk:assertk-jvm:0.24")
 }
