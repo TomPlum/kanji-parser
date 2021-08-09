@@ -10,12 +10,11 @@ import com.fasterxml.jackson.module.kotlin.readValue
 import com.fasterxml.jackson.module.kotlin.registerKotlinModule
 import io.github.tomplum.kanji.model.KanjiDictionary
 import java.io.FileNotFoundException
-import java.io.FileReader
 
 class KanjiParser {
     fun read(fileName: String): KanjiDictionary {
-        val reader = try {
-            FileReader(fileName)
+        val fileURL = try {
+            this::class.java.classLoader.getResource(fileName)
         } catch (e: FileNotFoundException) {
             throw IllegalArgumentException("Cannot find file $fileName", e)
         }
@@ -27,7 +26,7 @@ class KanjiParser {
             .configure(JsonParser.Feature.ALLOW_COMMENTS, true)
 
         try {
-            return mapper.readValue(reader)
+            return mapper.readValue(fileURL)
         } catch (e: MismatchedInputException) {
             throw IllegalStateException("$fileName cannot be de-serialised", e)
         }

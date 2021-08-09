@@ -5,7 +5,7 @@ import io.github.tomplum.kanji.model.Character
 
 fun main() {
     val parser = KanjiParser()
-    val dictionary = parser.read("/media/tom/T.Plumpton 2TB Ext HDD/My Documents/Learn Japanese/Kanji/kanjidic2.xml")
+    val dictionary = parser.read("kanjidic2.xml")
     val kanji = dictionary.characters
     val grade1 = kanji.filterByGrade(1)
     val grade2 = kanji.filterByGrade(2)
@@ -16,4 +16,4 @@ fun main() {
     val json = "";
 }
 
-fun List<Character>.filterByGrade(grade: Int) = this.filter { it.misc?.grade === grade }
+fun List<Character>.filterByGrade(grade: Int) = this.filter { it.misc?.grade == grade }
