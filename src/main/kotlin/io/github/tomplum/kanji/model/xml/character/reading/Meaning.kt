@@ -10,6 +10,6 @@ data class Meaning(
     var language: String = "en",
 ) {
     @JacksonXmlText
-    lateinit var value: String private set
+    lateinit var value: String
 }
 

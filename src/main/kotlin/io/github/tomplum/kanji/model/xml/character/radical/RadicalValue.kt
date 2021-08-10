@@ -10,6 +10,6 @@ data class RadicalValue(
     var type: String?,
 ) {
     @JacksonXmlText
-    lateinit var value: String private set
+    lateinit var value: String
 }
 

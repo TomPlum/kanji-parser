@@ -10,5 +10,5 @@ data class CodePointValue(
     var type: String?,
 ) {
     @JacksonXmlText
-    lateinit var value: String private set
+    lateinit var value: String
 }
