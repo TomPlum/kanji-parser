@@ -8,13 +8,13 @@ buildscript {
     }
 
     dependencies {
-        classpath(kotlin("gradle-plugin", version = "1.4.10"))
+        classpath(kotlin("gradle-plugin", version = "1.5.21"))
     }
 }
 
 plugins {
     idea
-    kotlin("jvm") version "1.4.10"
+    kotlin("jvm") version "1.5.21"
 }
 
 allprojects {
@@ -32,6 +32,10 @@ allprojects {
 
     tasks.withType<KotlinCompile> {
         kotlinOptions.jvmTarget = "11"
+    }
+
+    tasks.withType<Test> {
+        useJUnitPlatform { }
     }
 }
 
