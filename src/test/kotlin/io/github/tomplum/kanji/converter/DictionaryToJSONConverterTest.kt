@@ -36,7 +36,7 @@ class DictionaryToJSONConverterTest {
                 kun = listOf("みぎ"),
                 source = "",
                 meanings = listOf("right"),
-                grade = 1,
+                grade = "KyoikuGrade.ONE",
                 jlpt = 4,
                 strokes = 5,
                 examples = emptyList()
