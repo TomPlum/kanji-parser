@@ -12,4 +12,3 @@ data class Reading(
     @JacksonXmlText
     lateinit var value: String
 }
-

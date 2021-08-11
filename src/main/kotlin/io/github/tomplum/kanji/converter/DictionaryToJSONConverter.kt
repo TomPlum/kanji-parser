@@ -11,7 +11,6 @@ class DictionaryToJSONConverter {
             jlpt = character.misc?.jlpt,
             grade = character.misc?.grade,
             strokes = character.misc?.strokes,
-            code = "\\u${character.literal.codePointAt(0)}",
             on = character.readingMeaning?.group?.readings?.filter { it.type === "ja_on" }?.map { it.value },
             kun = character.readingMeaning?.group?.readings?.filter { it.type === "ja_kun" }?.map { it.value },
             meanings = character.readingMeaning?.group?.meanings?.filter { it.language === "en" }?.map { it.value },

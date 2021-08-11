@@ -2,7 +2,6 @@ package io.github.tomplum.kanji.model.json
 
 data class Kanji(
     val name: String,
-    val code: String,
     val on: List<String>? = emptyList(),
     val kun: List<String>? = emptyList(),
     val source: String,
