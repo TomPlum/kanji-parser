@@ -6,8 +6,9 @@ data class Kanji(
     val kun: List<String>? = emptyList(),
     val source: String,
     val meanings: List<String>? = emptyList(),
-    val grade: String?,
+    val grade: Int?,
     val jlpt: Int?,
     val strokes: Int?,
-    val examples: List<String> = emptyList()
+    val examples: List<KanjiExample> = emptyList(),
+    val tags: List<String> = emptyList()
 )

@@ -13,11 +13,7 @@ import java.io.FileNotFoundException
 
 class KanjiParser {
     fun read(fileName: String): KanjiDictionary {
-        val fileURL = try {
-            this::class.java.classLoader.getResource(fileName)
-        } catch (e: FileNotFoundException) {
-            throw IllegalArgumentException("Cannot find file $fileName", e)
-        }
+        val fileURL = FileReader().read(fileName)
 
         val mapper = XmlMapper(JacksonXmlModule().apply { setDefaultUseWrapper(false) }).registerKotlinModule()
             .configure(MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES, true)

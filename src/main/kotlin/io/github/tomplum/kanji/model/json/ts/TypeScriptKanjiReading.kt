@@ -1,3 +1,3 @@
 package io.github.tomplum.kanji.model.json.ts
 
-data class TypeScriptKanjiReading(val kana: String, val romaji: String)
+data class TypeScriptKanjiReading(var kana: String, var romaji: String)
