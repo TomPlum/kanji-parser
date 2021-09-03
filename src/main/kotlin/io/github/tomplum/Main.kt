@@ -6,19 +6,34 @@ import io.github.tomplum.kanji.KanjiWriter
 import io.github.tomplum.kanji.converter.DictionaryToJSONConverter
 import io.github.tomplum.kanji.model.json.KanjiExample
 import io.github.tomplum.kanji.model.json.Kanji
+import io.github.tomplum.kanji.model.json.KanjiJson
 import io.github.tomplum.kanji.model.json.ts.TypeScriptKanjiDictionary
 
 fun main() {
+    combineXmlAndTypescriptKanjiIntoJson()
+}
+
+fun combineXmlAndTypescriptKanjiIntoJson() {
     val dictionary = KanjiParser().read("kanjidic2.xml")
     val dictionaryKanji = DictionaryToJSONConverter().convert(dictionary)
+    println("New Kanji Found: ${dictionaryKanji.size}")
+    val total = listOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12).sumOf {
+        val quantity = dictionaryKanji.getQuantityForGrade(it)
+        println("Grade $it: $quantity")
+        quantity
+    }
+    println("Total Joyo: $total")
+
     val existing = JSONReader().read<TypeScriptKanjiDictionary>("existing-kanji-data.json").data
+    println("Existing Kanji Found: ${existing.size}")
+
     val combinedKanji = dictionaryKanji.map { new ->
         val match = existing.find { it.name == new.name }
         if (match != null) {
             Kanji(
                 name = new.name,
-                on = new.on,
-                kun = new.kun,
+                on = match.on?.map { it.kana }?.distinct(),
+                kun = match.kun?.map { it.kana }?.distinct(),
                 source = match.source,
                 meanings = match.meanings,
                 grade = convertGrade(match.grade),
@@ -28,11 +43,23 @@ fun main() {
                 tags = match.tags
             )
         } else {
-            new
+            Kanji(
+                name = new.name,
+                on = new.on?.distinct(),
+                kun = new.kun?.distinct(),
+                source = new.source,
+                meanings = new.meanings?.distinct(),
+                grade = new.grade,
+                jlpt = new.jlpt,
+                strokes = new.strokes,
+                examples = new.examples,
+                tags = new.tags.distinct()
+            )
         }
     }
-    val kyoiku = combinedKanji.filter { it.grade in listOf(1, 2, 3, 4, 5, 6) }.sortedBy { it.grade }
-    KanjiWriter().write(kyoiku)
+
+    val joyo = combinedKanji.filter { it.grade in listOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12) }.sortedBy { it.grade }
+    KanjiWriter().write(KanjiJson(joyo))
 }
 
 fun convertGrade(value: String) = when(value) {
@@ -44,3 +71,5 @@ fun convertGrade(value: String) = when(value) {
     "KyoikuGrade.SIX" -> 6
     else -> throw IllegalArgumentException("Unknown Kyoiku Grade: $value")
 }
+
+fun List<Kanji>.getQuantityForGrade(grade: Int) = this.count { it.grade == grade }

@@ -13,8 +13,10 @@ class DictionaryToJSONConverter {
             strokes = character.misc?.strokes,
             on = character.readingMeaning?.group?.readings?.filter { it.type == "ja_on" }?.map { parseReading(it.value) },
             kun = character.readingMeaning?.group?.readings?.filter { it.type == "ja_kun" }?.map { parseReading(it.value) },
-            meanings = character.readingMeaning?.group?.meanings?.filter { it.language == "en" }?.map { it.value },
+            meanings = character.readingMeaning?.group?.meanings?.filter {
+                it.language == "en"
+            }?.flatMap { it.value.split(", ").map { it.trim() } },
         )
     }
-    private fun parseReading(value: String) = value.replace("-", "").replace(".", "")
+    private fun parseReading(value: String) = value.replace("-", "").replace(".", "").trim()
 }
